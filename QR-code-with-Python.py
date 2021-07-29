@@ -1,0 +1,25 @@
+import qrcode
+data = 'Don\'t forget to subscribe'
+
+qr = qrcode.QRCode(version = 1, box_size=10, border=5)
+
+qr.add_data(data)
+
+qr.make(fit = True)
+img = qr.make_image(fill_color = 'black', back_color = 'white')
+
+img.save('/home/melike/Desktop/test/myqrcode2.png')
+
+#QR Code Decoding (pip install pyzbar)
+
+from pyzbar.pyzbar import decode
+from PIL import Image
+
+img = Image.open('/home/melike/Desktop/test/myqrcode2.png')
+
+result = decode(img)
+
+print(result)
+
+
+
